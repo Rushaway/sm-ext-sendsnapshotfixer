@@ -2,6 +2,11 @@ name: CI
 
 on: [push, pull_request, workflow_dispatch]
 
+permissions:
+  contents: 'read'
+  id-token: 'write'
+  issues: 'write'
+
 jobs:
   build:
     name: Build
@@ -75,11 +80,6 @@ jobs:
         with:
           name: ${{ runner.os }}
           path: extension/build/package
-
-permissions:
-  contents: 'read'
-  id-token: 'write'
-  issues: 'write'
 
   release:
     name: Release
