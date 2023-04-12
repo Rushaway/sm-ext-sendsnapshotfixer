@@ -76,6 +76,10 @@ jobs:
           name: ${{ runner.os }}
           path: extension/build/package
 
+permissions:
+  contents: 'read'
+  id-token: 'write'
+  issues: 'write'
 
   release:
     name: Release
