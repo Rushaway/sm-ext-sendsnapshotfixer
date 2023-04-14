@@ -2,11 +2,6 @@ name: CI
 
 on: [push, pull_request, workflow_dispatch]
 
-permissions:
-  contents: 'read'
-  id-token: 'write'
-  issues: 'write'
-
 jobs:
   build:
     name: Build
@@ -19,7 +14,7 @@ jobs:
         include:
           - os: ubuntu-20.04
             target-archs: x86,x86_64
-            sdks: css
+            sdks: sdk2013
 
     steps:
       - name: Install Linux packages
@@ -83,7 +78,7 @@ jobs:
 
   release:
     name: Release
-    if: startsWith(github.ref, 'refs/tags/') || github.ref == 'refs/heads/master' || github.ref == 'refs/heads/test'
+    if: startsWith(github.ref, 'refs/tags/')
     needs: build
     runs-on: ubuntu-latest
 
